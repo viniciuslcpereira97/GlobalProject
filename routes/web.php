@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+foreach (File::allFiles(__DIR__.'/loggedIn') as $partial) {
+    require $partial->getPathname();
+}
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+foreach (File::allFiles(__DIR__.'/loggedOut') as $partial) {
+    require $partial->getPathname();
+}
