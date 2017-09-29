@@ -2,6 +2,8 @@
 
 namespace DevFinder\Repositories;
 
+use Illuminate\Database\Eloquent\Model as BaseModel;
+
 /*
 |--------------------------------------------------------------------------
 | Repository Interface
@@ -9,20 +11,29 @@ namespace DevFinder\Repositories;
 |
 | All repositories must to implement this interface
 |
+| Don't forget to overwrite all methods when you 
+| implement this interface
+|
 */
 
 interface RepositoryInterface {
 
     /**
-     * [all description]
-     * @return [type] [description]
+     * Class Constructor
+     * @param BaseModel $model
+     */
+    public function __construct(BaseModel $model);
+
+    /**
+     * Retrieves all
+     * @return Collection
      */
     public function all();
     
     /**
-     * [byId description]
-     * @param  [type] $id [description]
-     * @return [type]     [description]
+     * Retrieves by id
+     * @param  Undefined $id
+     * @return Collection
      */
     public function byId($id);
 

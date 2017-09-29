@@ -3,6 +3,7 @@
 namespace DevFinder\Repositories;
 
 use DevFinder\Repositories\RepositoryInterface;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,10 +11,12 @@ use DevFinder\Repositories\RepositoryInterface;
 |--------------------------------------------------------------------------
 |
 | Base repository class for all another repository class
+| Abstract Class. You cannot instatiate this class!
+| This class implements Repository Interface, don't forget to overwrite methods
 |
 */
 
-class BaseRepository implements RepositoryInterface {
+abstract class BaseRepository implements RepositoryInterface {
 
     /**
      * Model initializer
@@ -22,12 +25,11 @@ class BaseRepository implements RepositoryInterface {
     protected $model;
 
     /**
-     * Object singleton
-     * @param [Model] $model
+     * [__construct description]
      */
-    public function singleton($model)
+    function __construct(BaseModel $model)
     {
-        $this->model = new $model;
+        $this->model = $model;
     }
     
     /**

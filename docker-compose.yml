@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+    webserver:
+        build: .
+        image: 'bitnami/apache:latest'
+        ports:
+            - '8888:80'
+        volumes:
+            - .:/var/www/html
+            - ./apache.conf:/etc/apache2/sites-available/000-default.conf

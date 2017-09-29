@@ -1653,17 +1653,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            itens: ['item1', 'item2', 'item3', 'item4', 'item5'],
+            data: ['item6', 'item7', 'item8', 'item9', 'item10']
+        };
+    },
+
+    methods: {
+        addItens: function addItens() {
+            var to_concat = this.data.slice(0, 5);
+            this.itens = this.itens.concat(to_concat);
+        }
     }
 });
 
@@ -31746,22 +31750,16 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
-}]}
+  }, [_c('ul', _vm._l((_vm.itens), function(item) {
+    return _c('li', [_vm._v(_vm._s(item))])
+  })), _vm._v(" "), _c('button', {
+    on: {
+      "click": _vm.addItens
+    }
+  }, [_vm._v("See more...")])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
